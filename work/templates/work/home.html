@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block contents %}
+<h1>O-PEACE</h1>
+{% if user.is_authenticated %}
+    <span>{{ user.username }}</span>
+    <a href="/accounts/logout">로그아웃</a>
+{% else %}
+    <a href="/accounts/login">로그인</a>
+{% endif %}
+
+{% endblock %}
