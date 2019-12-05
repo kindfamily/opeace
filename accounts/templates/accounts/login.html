@@ -1,10 +1,33 @@
 {% extends "layout.html" %}
 
 {% block contents %}
-<h1>LOGIN</h1>
-<form action="/accounts/login/" method="POST">
-{% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="가입" />
-</form>
+<div class="login_container">
+    <div class=" ui middle aligned center aligned grid">
+        <div class="column">
+          <h2 class="ui teal image header">
+            <div class="content">
+              Log-in to your account
+            </div>
+          </h2>
+          <form  action="/accounts/login/" method="POST" class="ui large form">
+            {% csrf_token %}
+            <div class="ui stacked segment">
+              <div class="field">
+                <div class="ui left icon input">
+                  <i class="user icon"></i>
+                  <input type="text" id="id_username" name="username" placeholder="Username" required>
+                </div>
+              </div>
+              <div class="field">
+                <div class="ui left icon input">
+                  <i class="lock icon"></i>
+                  <input type="password" id="id_password" name="password" placeholder="Password" required>
+                </div>
+              </div>
+              <input type="submit" class="ui fluid large teal submit button" value="Login" />
+            </div>
+          </form>
+        </div>
+      </div>
+</div>
 {% endblock %}

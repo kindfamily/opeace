@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% block contents %}
+<h1>O-PEACE</h1>
+{% if user.is_authenticated %}
+    <span>{{ user.username }}</span>
+    <a href="/accounts/logout">로그아웃</a>
+
+    <div class="count">3</div>
+
+
+    <div data-name="start"> 시작버튼 </div>
+
+
+
+{% else %}
+    <a href="/accounts/login">로그인</a>
+{% endif %}
+
+
+
+{% block js %}
+<script type="text/javascript">
+    const count = document.querySelector('.count');
+
+    function countdown(e) {
+        let elem = e.target;
+    
+        console.log(elem);
+
+        while (!elem.getAttribute('data-name')){
+            elem = elem.parentNode;
+            
+            if (elem.nodeName === 'BODY'){
+                elem = null;
+                return;
+            }
+        }
+
+        if (elem.matches('[data-name="start"]')){
+            console.log('스타트');
+
+            let counter = 3;
+            let newYearCountdown = setInterval(function(){
+            console.log(counter);
+            counter--
+            
+            count.innerHTML = counter;
+            if (counter === 0) {
+                console.log("HAPPY NEW YEAR!!");
+                clearInterval(newYearCountdown);
+                window.location.href = '/working'
+            }
+            }, 1000);
+
+
+        }
+    }
+
+
+
+
+    window.addEventListener('click', countdown);
+</script>
+
+
+{% endblock %}
+
+
+
+{% endblock %}

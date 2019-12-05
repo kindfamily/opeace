@@ -5,8 +5,20 @@
 {% if user.is_authenticated %}
     <span>{{ user.username }}</span>
     <a href="/accounts/logout">로그아웃</a>
+
+    <div>사용자 프로필</div>
+    <div>사용내역</div>
+    <div><a href="{% url 'start' %}">입장</a></div>
+
+
+
+
 {% else %}
     <a href="/accounts/login">로그인</a>
 {% endif %}
+
+
+
+
 
 {% endblock %}
