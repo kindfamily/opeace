@@ -4,6 +4,8 @@
 }
 
 
+
+
 .home_container .home_contents_wrapper {
     height: 200px;
 }
@@ -11,4 +13,36 @@
 .login_container {
     max-width: 500px;
     margin: 100px auto;
+}
+
+.start_container {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 30px;
+    border: 1px solid black;
+}
+
+.start_container .count {
+    margin: 200px;
+    font-size: 100px;
+}
+
+.working_container {
+    text-align: center;
+    display: flex;
+    text-align: left;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 30px;
+    border: 1px solid black;
+}
+
+.working_container .timer {
+    margin: 20px 0px;
+    line-height: 120%;
+    font-size: 30px;
 }

@@ -1,23 +1,27 @@
 {% extends "layout.html" %}
 
 {% block contents %}
-<h1>O-PEACE</h1>
-{% if user.is_authenticated %}
-    <span>{{ user.username }}</span>
-    <a href="/accounts/logout">로그아웃</a>
+<div class="start_container">
+    <div class="start_contents_wrapper">
+    <h1>O-PEACE</h1>
+    {% if user.is_authenticated %}
+        <span>{{ user.username }}</span>
+        <a href="/accounts/logout" class="mini compact ui button">로그아웃</a>
 
-    <div class="count">3</div>
-
-
-    <div data-name="start"> 시작버튼 </div>
-
+        <div class="count">3</div>
 
 
-{% else %}
-    <a href="/accounts/login">로그인</a>
-{% endif %}
+        <div data-name="start" class="large compact ui button"> 시작버튼 </div>
 
 
+
+    {% else %}
+        <a href="/accounts/login">로그인</a>
+    {% endif %}
+
+    </div>
+</div>
+{% endblock %}
 
 {% block js %}
 <script type="text/javascript">
@@ -51,21 +55,11 @@
                 clearInterval(newYearCountdown);
                 window.location.href = '/working'
             }
-            }, 1000);
-
-
+            }, 700);
         }
     }
-
-
-
-
     window.addEventListener('click', countdown);
 </script>
-
-
-{% endblock %}
-
 
 
 {% endblock %}

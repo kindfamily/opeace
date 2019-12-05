@@ -1,32 +1,27 @@
 {% extends "layout.html" %}
 
 {% block contents %}
-<h1>O-PEACE</h1>
-{% if user.is_authenticated %}
-<!-- 1. 남음시간을 서버에서 불러와서 -->
-<!-- 2. 자바스크립트로 시간을 제서 남은시간에서 사용시간을 삭제 -->
-<!-- 3. 서버에 전송 -->
+<div class="working_container">
+    <div class="working_contents_wrapper">
+        <h1>O-PEACE</h1>
+        {% if user.is_authenticated %}
+        <!-- 1. 남음시간을 서버에서 불러와서 -->
+        <!-- 2. 자바스크립트로 시간을 제서 남은시간에서 사용시간을 삭제 -->
+        <!-- 3. 서버에 전송 -->
+            <span>{{ user.username }}</span>
+            <a href="/accounts/logout"  class="mini compact ui button">로그아웃</a>
 
-
-    <span>{{ user.username }}</span>
-    <a href="/accounts/logout">로그아웃</a>
-
-
-    <div>스톱워치</div><div>0000</div>
-
-
-    <div>남은시간</div><div>0000</div>
-
-
-    <div>나가기</div>
-
-
-
-{% else %}
-    <a href="/accounts/login">로그인</a>
-{% endif %}
-
-
+            <div class="timer">
+                    <div>스톱워치</div><div>0000</div>
+                    <div>남은시간</div><div>0000</div>
+            </div>
+            <div><a href="/" class="large compact ui button">나가기</a></div>
+        {% else %}
+            <a href="/accounts/login">로그인</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
 
 {% block js %}
 <script type="text/javascript">
@@ -49,32 +44,10 @@
         if (elem.matches('[data-name="start"]')){
             console.log('스타트');
 
-            let counter = 3;
-            let newYearCountdown = setInterval(function(){
-            console.log(counter);
-            counter--
-            
-            count.innerHTML = counter;
-            if (counter === 0) {
-                console.log("HAPPY NEW YEAR!!");
-                clearInterval(newYearCountdown);
-                window.location.href = '/working'
-            }
-            }, 1000);
-
-
         }
     }
 
-
-
-
     window.addEventListener('click', countdown);
 </script>
-
-
 {% endblock %}
 
-
-
-{% endblock %}
