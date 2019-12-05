@@ -1,21 +1,46 @@
 {% extends "layout.html" %}
 
 {% block contents %}
-<h1>O-PEACE</h1>
-{% if user.is_authenticated %}
-    <span>{{ user.username }}</span>
-    <a href="/accounts/logout">로그아웃</a>
+<div class="home_container">
+    <div class="home_contents_wrapper">
+        <h1>O-PEACE</h1>
+        {% if user.is_authenticated %}
+            <span>{{ user.username }}</span>
+            <a href="/accounts/logout" class="mini compact ui button">logout</a>
+        
+            <div class="img"><img class="centered ui medium circular image" src="/static/images/bear.jpg" style="width: 100px;"></div>
+            <div><a href="{% url 'start' %}" class="ui blue button">입장</a></div>
 
-    <div>사용자 프로필</div>
-    <div>사용내역</div>
-    <div><a href="{% url 'start' %}">입장</a></div>
+            <table class="ui celled table">
+                <thead>
+                  <tr><th>입장시간</th>
+                  <th>퇴장시간</th>
+                  <th>사용시간</th>
+                </tr></thead>
+                <tbody>
+                  <tr>
+                    <td data-label="Name">James</td>
+                    <td data-label="Age">24</td>
+                    <td data-label="Job">Engineer</td>
+                  </tr>
+                  <tr>
+                    <td data-label="Name">Jill</td>
+                    <td data-label="Age">26</td>
+                    <td data-label="Job">Engineer</td>
+                  </tr>
+                  <tr>
+                    <td data-label="Name">Elyse</td>
+                    <td data-label="Age">24</td>
+                    <td data-label="Job">Designer</td>
+                  </tr>
+                </tbody>
+              </table>
+        {% else %}
+            <a href="/accounts/login" class="ui blue button">로그인</a>
+        {% endif %}
+    </div>
+</div>
 
-
-
-
-{% else %}
-    <a href="/accounts/login">로그인</a>
-{% endif %}
 
 
 
